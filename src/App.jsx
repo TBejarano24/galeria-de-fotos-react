@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <div className="flex justify-center my-5">
-        <h1 className="text-4xl font-bold">PHOTO SEARCH</h1>
+        <h1 className="text-4xl font-bold text-center">PHOTO SEARCH</h1>
       </div>
       <SearchBar userInput={setSearchInput} />
       <Button buttonQuery={setSearchInput} />

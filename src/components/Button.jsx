@@ -5,7 +5,7 @@ export default function Button({ buttonQuery }) {
   };
 
   return (
-    <div className="flex w-full justify-center items-center gap-2">
+    <div className="flex w-full justify-center items-center gap-2 flex-wrap">
       <button
         className="px-3 py-2 bg-blue-900 text-white rounded-lg"
         onClick={handleClick}

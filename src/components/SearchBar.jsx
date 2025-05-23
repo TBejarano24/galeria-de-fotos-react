@@ -23,7 +23,7 @@ export default function SearchBar({ userInput }) {
       <img
         onClick={handleSubmit}
         className="bg-blue-900 p-3 rounded-r-lg"
-        src="/public/search.svg"
+        src="public\search.svg"
         alt="search icon"
       />
     </form>

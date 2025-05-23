@@ -28,10 +28,15 @@ export default function PhotoContainer({ photoQuery }) {
   });
 
   return (
-    <div className="w-full grid grid-cols-4 gap-y-2 max-w-[80%] place-self-center mb-[50px]">
+    <div className="w-full grid grid-cols-1 gap-y-2 max-w-[80%] place-self-center mb-[50px] justify-items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {data.map((photo) => (
-        <div className="w-[250px]">
-          <img className="w-fit" key={photo.id} src={photo.src.medium} alt="" />
+        <div className="max-w-[190px]">
+          <img
+            className="place-self-center"
+            key={photo.id}
+            src={photo.src.medium}
+            alt=""
+          />
         </div>
       ))}
     </div>
