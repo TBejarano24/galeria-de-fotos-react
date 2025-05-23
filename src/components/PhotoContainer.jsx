@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 export default function PhotoContainer({ photoQuery }) {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,23 +23,36 @@ export default function PhotoContainer({ photoQuery }) {
         setData(info.photos);
       } catch (error) {
         console.error(error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
-  });
+  }, [photoQuery]);
 
   return (
     <div className="w-full grid grid-cols-1 gap-y-2 max-w-[80%] place-self-center mb-[50px] justify-items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      {data.map((photo) => (
-        <div className="max-w-[190px]">
-          <img
-            className="place-self-center"
-            key={photo.id}
-            src={photo.src.medium}
-            alt=""
-          />
-        </div>
-      ))}
+      {loading ? (
+        <p className="col-span-4 text-center text-2xl font-bold">
+          Loading Content...
+        </p>
+      ) : (
+        data.map((photo) => (
+          <div className="max-w-[190px]">
+            <img
+              className="place-self-center"
+              key={photo.id}
+              src={photo.src.medium}
+              alt=""
+            />
+          </div>
+        ))
+      )}
+      {!loading && data.length === 0 && (
+        <p className="col-span-4 text-center text-2xl font-bold">
+          No results found for {photoQuery}
+        </p>
+      )}
     </div>
   );
 }
